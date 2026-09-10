@@ -2,6 +2,7 @@
 **Company:** NIKE, Inc. (NYSE: NKE)  
 **Date:** September 10, 2026  
 **Course:** FIN 43900 — AI in Finance (Fall 2026), Lab 06  
+**Session Code:** REVERSEDCF  
 **Author:** Will Gao (gao713@purdue.edu)  
 **Evidence Boundary:** FY2026 Form 10-K (filed July 15, 2026) and market prices through September 2, 2026 close ($38.24) / August 31, 2026 close ($39.06).  
 **Prior Baselines Linked:** [Lab 03 Screening Memo](NIKE_2026-09-03/lab_3.md) · [Lab 05 Engine & Checkpoints](FIN43900-Fall2026/lessons/week-03/starter/dcf_starter.py) · [Project 1 Committee Memo](project-1-committee-work.md) · [AI Validation Record](project-1-validation-ai-use.md)
@@ -128,7 +129,7 @@ Conforming to the course's mandatory decision framework:
 
 Use these verified figures and narratives for the Brightspace Lab 06 Checkout:
 
-1. **Session Code / Token:** *(Entered from the classroom whiteboard)*
+1. **Session Code / Token:** **REVERSEDCF**
 2. **Attendance Declaration:** Confirmed in-person attendance.
 3. **Prediction vs. Actual:**
    * *Prediction:* Value falls by $\approx 15\%$ due to wider Gordon growth denominator.
