@@ -1,0 +1,13 @@
+input,value,unit
+starting_fcff,3131.16279,USD millions
+growth_year_1,0.075000,decimal
+growth_year_2,0.156269,decimal
+growth_year_3,0.155704,decimal
+growth_year_4,0.089151,decimal
+growth_year_5,0.076546,decimal
+wacc,0.09,decimal
+terminal_growth,0.025,decimal
+nonoperating_cash,9027,USD millions
+debt,7942,USD millions
+diluted_shares,1481.0,millions of shares
+
