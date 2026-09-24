@@ -24,6 +24,11 @@ We address this question for **NIKE, Inc. (NYSE: NKE)** by converting audited SE
   2. **Channel Inventory & Direct-to-Consumer (DTC) Shifts:** Working capital cycles are heavily dictated by inventory positioning across wholesale retail partners versus Nike Direct (digital apps and company-owned stores), rather than lot financing debt.
   3. **Net Cash Balance Sheet:** Unlike levered dealerships, Nike ended FY2026 in a **net cash position** of $1,085 million ($9,027M cash & short-term investments vs. $7,942M total book debt), requiring no revolver drawdown under baseline conditions.
 
+### Partner Pre-Build Briefing Exchange (Section D Swap)
+* **Partner's Question:** *"How does removing floor plan debt change how your model solves for cash and working capital compared to Asbury?"*
+* **Student's Explanation:** *"In Asbury's model, expanding lot inventory automatically expanded floor plan notes to absorb ~95% of the capital burden; for Nike, because floor plan is zero, every dollar of working capital and inventory build is funded entirely from internal operating cash flow, making gross margin stability and supply chain velocity the critical drivers of equity value."*
+
+
 ---
 
 ## 2. R — Represent: Historical 3-Year Filings, Ratios & Labeled Assumptions
@@ -93,6 +98,15 @@ Every assumption is explicitly labeled as **`history`** (derived from 3-year SEC
 | 17 | **Term Debt Repayment** | $500.0M / yr | `guidance` | Disciplined debt paydown following $2,000M FY27 scheduled notes maturity, reducing annual gross debt burden. |
 | 18 | **Capital Return (Div + Buybacks)** | $2,500.0M / yr | `judgment` | Reflects commitment to maintaining ~\$1.5B in annual dividends plus disciplined share repurchases from free cash flow. |
 | 19 | **Cost of Equity ($r_e$) / Terminal $g$** | 9.0% / 2.5% | `judgment` | CAPM: $R_f = 4.25\%$, $\beta = 0.95$, $\text{ERP} = 5.0\% \implies 9.0\%$. Terminal growth capped at 2.5% mature long-term economic growth. |
+
+#### Special Modeling Rule: Negative FCFE Audit & Terminal Value Principle
+* **Nike FCFE Status:** Nike generates strictly **positive FCFE** in all five forecast years (FY27E: $1,742.8M, FY28E: $2,074.1M, FY29E: $2,356.5M, FY30E: $2,681.4M, FY31E: $2,984.5M).
+* **Course Rule Application:** If a company generates negative FCFE, the three statements must still balance and pass all checks. 
+* **Why Terminal Value on Negative FCFE Is Not a Number:** A terminal value calculated on a negative cash flow is mathematically and economically meaningless because capitalizing an ongoing cash burn at $(r - g)$ assumes infinite continuous equity destruction that would inevitably trigger corporate bankruptcy long before reaching perpetuity.
+
+#### Partner Fresh-Eyes Review (Under the Table Attack & Defense)
+* **Partner Attack on Assumption #5 (Gross Margin):** *"Why do you forecast gross margin expanding from 42.91% in FY2026 back up to 44.50% by FY2031 when FY2026 currency-neutral revenue in Greater China fell 13% and Nike Direct digital traffic contracted 12% — what observable filing evidence would force you to abandon this turnaround assumption?"*
+* **Two-Sentence Reasoned Defense:** *"I anchored the 44.50% terminal gross margin to Nike's pre-restructuring historical baseline (44.56% in FY2024), predicated on management's 'Win Now' product cadence eliminating off-price promotional liquidations as wholesale inventory clears. However, if consecutive quarterly Form 10-Q filings through FY2028 show Nike Direct digital markdowns persisting or Greater China gross margins failing to exceed 43.0%, I would immediately abandon this thesis and flatten terminal gross margin at the FY2025–FY2026 trough of 42.8%."*
 
 ---
 
@@ -236,3 +250,4 @@ Value per Diluted Share         : $      30.19
 | **Lab 10 Report (Ticker Titled)** | [`proforma_0924_NKE.md`](file:///Users/wgdeary/FIN439%20work%20folder/proforma_0924_NKE.md) | Primary markdown checkout document with history grid, assumptions, checks, and partner review. |
 | **Lab 10 Report (Alternate Links)** | [`proforma_NKE.md`](file:///Users/wgdeary/FIN439%20work%20folder/proforma_NKE.md) · [`Lab_10.md`](file:///Users/wgdeary/FIN439%20work%20folder/Lab_10.md) | Synced cross-referenced file names ensuring accessibility across all evaluation mechanisms. |
 | **GitHub Target Repository** | [`WGdearY/TICKER-research`](https://github.com/WGdearY/TICKER-research) | Main remote submission repository. |
+
