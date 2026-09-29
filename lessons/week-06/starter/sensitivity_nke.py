@@ -3,9 +3,10 @@
 Author: Will Gao (gao713@purdue.edu)
 Company: NIKE, Inc. (NYSE: NKE)
 Evidence Boundary: FY2026 Form 10-K (filed July 15, 2026) for fiscal year ended May 31, 2026.
-Standard library only. Performs one-at-a-time sensitivity analysis on two operating drivers:
-  1. Gross Margin Trajectory (Operating Margin Driver)
-  2. Capital Expenditures as % of Revenue (Operating Reinvestment Driver)
+Standard library only. Performs one-at-a-time sensitivity analysis on two core operating drivers:
+  1. Revenue / Sales Growth Rate Trajectory (Top-Line Volume & Channel Recovery Driver)
+  2. Gross Margin Trajectory (Operating Margin & Full-Price Realization Driver)
+  (Also includes Operating Reinvestment / CapEx % of Revenue as cross-driver comparison)
 Preserves fresh copies of base inputs, reruns linked 3-statement pro-forma model,
 verifies accounting checks (Assets - Liabilities - Equity = 0.0), and restores base.
 """
@@ -104,7 +105,9 @@ def run_proforma(inp: dict, break_test: bool = False) -> dict:
         # FCFE calculation
         delta_inv = inv - prev_inv
         delta_owc = inp["owc_ratio"] * delta_rev
-        fcfe = ni + depr + inp["impairment"] - capex - delta_inv - delta_owc - inp["repayment"]
+        delta_fp = 0.0
+
+        fcfe = ni + depr + inp["impairment"] - capex - delta_inv - delta_owc + delta_fp - inp["repayment"]
 
         # Dynamic Cash Plug and Revolver
         prelim_cash = prev_cash + fcfe - inp["capital_return"]
@@ -166,6 +169,7 @@ def run_proforma(inp: dict, break_test: bool = False) -> dict:
     value_per_share = total_equity_value / inp["shares"]
 
     return {
+        "final_rev": income_statement[-1]["rev"],
         "final_ebit": income_statement[-1]["ebit"],
         "final_fcfe": cash_flow[-1]["fcfe"],
         "value_per_share": value_per_share,
@@ -177,8 +181,7 @@ def run_proforma(inp: dict, break_test: bool = False) -> dict:
 
 
 def run_sensitivity_suite() -> dict:
-    """Executes the full one-at-a-time sensitivity suite and verifies base restoration."""
-    # 1. Base run before analysis
+    """Executes one-at-a-time sensitivity suite across Revenue Growth, Gross Margin, and CapEx."""
     base_inp_initial = get_base_inputs()
     base_res_initial = run_proforma(base_inp_initial)
 
@@ -188,7 +191,63 @@ def run_sensitivity_suite() -> dict:
 
     runs = []
 
-    # 2. Driver 1: Gross Margin Trajectory (+/- 1.0 pp across all 5 years)
+    # -------------------------------------------------------------
+    # Driver 1: Revenue / Sales Growth Rate Trajectory (+/- 1.0 pp)
+    # -------------------------------------------------------------
+    # Lower (-1.0 pp)
+    inp_rev_low = copy.deepcopy(base_inp_initial)
+    inp_rev_low["growths"] = [g - 0.010 for g in inp_rev_low["growths"]]
+    res_rev_low = run_proforma(inp_rev_low)
+    runs.append({
+        "driver": "Revenue / Sales Growth Rate",
+        "case": "Lower (-1.0 pp: 2.0% -> 2.0%)",
+        "input_val": "[2.0%, 3.0%, 4.0%, 3.0%, 2.0%]",
+        "rev": res_rev_low["final_rev"],
+        "ebit": res_rev_low["final_ebit"],
+        "delta_ebit": res_rev_low["final_ebit"] - base_ebit,
+        "fcfe": res_rev_low["final_fcfe"],
+        "delta_fcfe": res_rev_low["final_fcfe"] - base_fcfe,
+        "val": res_rev_low["value_per_share"],
+        "delta_val": res_rev_low["value_per_share"] - base_val,
+        "bs_pass": all(abs(c["gap"]) <= 0.01 for c in res_rev_low["checks"])
+    })
+
+    # Base
+    runs.append({
+        "driver": "Revenue / Sales Growth Rate",
+        "case": "Base Case (3.0% -> 3.0%)",
+        "input_val": "[3.0%, 4.0%, 5.0%, 4.0%, 3.0%]",
+        "rev": base_res_initial["final_rev"],
+        "ebit": base_ebit,
+        "delta_ebit": 0.0,
+        "fcfe": base_fcfe,
+        "delta_fcfe": 0.0,
+        "val": base_val,
+        "delta_val": 0.0,
+        "bs_pass": True
+    })
+
+    # Higher (+1.0 pp)
+    inp_rev_high = copy.deepcopy(base_inp_initial)
+    inp_rev_high["growths"] = [g + 0.010 for g in inp_rev_high["growths"]]
+    res_rev_high = run_proforma(inp_rev_high)
+    runs.append({
+        "driver": "Revenue / Sales Growth Rate",
+        "case": "Higher (+1.0 pp: 4.0% -> 4.0%)",
+        "input_val": "[4.0%, 5.0%, 6.0%, 5.0%, 4.0%]",
+        "rev": res_rev_high["final_rev"],
+        "ebit": res_rev_high["final_ebit"],
+        "delta_ebit": res_rev_high["final_ebit"] - base_ebit,
+        "fcfe": res_rev_high["final_fcfe"],
+        "delta_fcfe": res_rev_high["final_fcfe"] - base_fcfe,
+        "val": res_rev_high["value_per_share"],
+        "delta_val": res_rev_high["value_per_share"] - base_val,
+        "bs_pass": all(abs(c["gap"]) <= 0.01 for c in res_rev_high["checks"])
+    })
+
+    # -------------------------------------------------------------
+    # Driver 2: Gross Margin Trajectory (+/- 1.0 pp)
+    # -------------------------------------------------------------
     # Lower (-1.0 pp)
     inp_gm_low = copy.deepcopy(base_inp_initial)
     inp_gm_low["gross_margins"] = [m - 0.010 for m in inp_gm_low["gross_margins"]]
@@ -197,6 +256,7 @@ def run_sensitivity_suite() -> dict:
         "driver": "Gross Margin Trajectory",
         "case": "Lower (-1.0 pp: 42.20% -> 43.50%)",
         "input_val": "Base - 0.010",
+        "rev": res_gm_low["final_rev"],
         "ebit": res_gm_low["final_ebit"],
         "delta_ebit": res_gm_low["final_ebit"] - base_ebit,
         "fcfe": res_gm_low["final_fcfe"],
@@ -211,6 +271,7 @@ def run_sensitivity_suite() -> dict:
         "driver": "Gross Margin Trajectory",
         "case": "Base (43.20% -> 44.50%)",
         "input_val": "Base (43.20% -> 44.50%)",
+        "rev": base_res_initial["final_rev"],
         "ebit": base_ebit,
         "delta_ebit": 0.0,
         "fcfe": base_fcfe,
@@ -228,6 +289,7 @@ def run_sensitivity_suite() -> dict:
         "driver": "Gross Margin Trajectory",
         "case": "Higher (+1.0 pp: 44.20% -> 45.50%)",
         "input_val": "Base + 0.010",
+        "rev": res_gm_high["final_rev"],
         "ebit": res_gm_high["final_ebit"],
         "delta_ebit": res_gm_high["final_ebit"] - base_ebit,
         "fcfe": res_gm_high["final_fcfe"],
@@ -237,8 +299,9 @@ def run_sensitivity_suite() -> dict:
         "bs_pass": all(abs(c["gap"]) <= 0.01 for c in res_gm_high["checks"])
     })
 
-    # 3. Driver 2: CapEx % of Revenue (1.0% to 2.0%, Base 1.5%)
-    # Lower (-0.5 pp: 1.0%)
+    # -------------------------------------------------------------
+    # Comparison Reinvestment Driver: CapEx % of Revenue (1.0% to 2.0%)
+    # -------------------------------------------------------------
     inp_capex_low = copy.deepcopy(base_inp_initial)
     inp_capex_low["capex_pct"] = 0.010
     res_capex_low = run_proforma(inp_capex_low)
@@ -246,6 +309,7 @@ def run_sensitivity_suite() -> dict:
         "driver": "CapEx % of Revenue",
         "case": "Lower (1.00% of Rev, -0.5 pp)",
         "input_val": "1.00% of Revenue",
+        "rev": res_capex_low["final_rev"],
         "ebit": res_capex_low["final_ebit"],
         "delta_ebit": res_capex_low["final_ebit"] - base_ebit,
         "fcfe": res_capex_low["final_fcfe"],
@@ -255,11 +319,11 @@ def run_sensitivity_suite() -> dict:
         "bs_pass": all(abs(c["gap"]) <= 0.01 for c in res_capex_low["checks"])
     })
 
-    # Base
     runs.append({
         "driver": "CapEx % of Revenue",
         "case": "Base (1.50% of Rev)",
         "input_val": "1.50% of Revenue",
+        "rev": base_res_initial["final_rev"],
         "ebit": base_ebit,
         "delta_ebit": 0.0,
         "fcfe": base_fcfe,
@@ -269,7 +333,6 @@ def run_sensitivity_suite() -> dict:
         "bs_pass": True
     })
 
-    # Higher (+0.5 pp: 2.0%)
     inp_capex_high = copy.deepcopy(base_inp_initial)
     inp_capex_high["capex_pct"] = 0.020
     res_capex_high = run_proforma(inp_capex_high)
@@ -277,6 +340,7 @@ def run_sensitivity_suite() -> dict:
         "driver": "CapEx % of Revenue",
         "case": "Higher (2.00% of Rev, +0.5 pp)",
         "input_val": "2.00% of Revenue",
+        "rev": res_capex_high["final_rev"],
         "ebit": res_capex_high["final_ebit"],
         "delta_ebit": res_capex_high["final_ebit"] - base_ebit,
         "fcfe": res_capex_high["final_fcfe"],
@@ -286,22 +350,7 @@ def run_sensitivity_suite() -> dict:
         "bs_pass": all(abs(c["gap"]) <= 0.01 for c in res_capex_high["checks"])
     })
 
-    # 4. Alternative Teaching Check: Halved Range on Gross Margin (+/- 0.5 pp)
-    inp_gm_half_low = copy.deepcopy(base_inp_initial)
-    inp_gm_half_low["gross_margins"] = [m - 0.005 for m in inp_gm_half_low["gross_margins"]]
-    res_gm_half_low = run_proforma(inp_gm_half_low)
-
-    inp_gm_half_high = copy.deepcopy(base_inp_initial)
-    inp_gm_half_high["gross_margins"] = [m + 0.005 for m in inp_gm_half_high["gross_margins"]]
-    res_gm_half_high = run_proforma(inp_gm_half_high)
-
-    halved_runs = [
-        {"case": "Lower (-0.5 pp)", "ebit": res_gm_half_low["final_ebit"], "fcfe": res_gm_half_low["final_fcfe"], "val": res_gm_half_low["value_per_share"]},
-        {"case": "Base", "ebit": base_ebit, "fcfe": base_fcfe, "val": base_val},
-        {"case": "Higher (+0.5 pp)", "ebit": res_gm_half_high["final_ebit"], "fcfe": res_gm_half_high["final_fcfe"], "val": res_gm_half_high["value_per_share"]},
-    ]
-
-    # 5. Restore Base and verify equality
+    # Restore Base and verify equality
     base_inp_restored = get_base_inputs()
     base_res_restored = run_proforma(base_inp_restored)
 
@@ -311,7 +360,11 @@ def run_sensitivity_suite() -> dict:
         abs(base_res_initial["value_per_share"] - base_res_restored["value_per_share"]) < 1e-4
     )
 
-    # 6. Spans
+    # Spans calculation
+    rev_ebit_span = res_rev_high["final_ebit"] - res_rev_low["final_ebit"]
+    rev_fcfe_span = res_rev_high["final_fcfe"] - res_rev_low["final_fcfe"]
+    rev_val_span = res_rev_high["value_per_share"] - res_rev_low["value_per_share"]
+
     gm_ebit_span = res_gm_high["final_ebit"] - res_gm_low["final_ebit"]
     gm_fcfe_span = res_gm_high["final_fcfe"] - res_gm_low["final_fcfe"]
     gm_val_span = res_gm_high["value_per_share"] - res_gm_low["value_per_share"]
@@ -320,31 +373,26 @@ def run_sensitivity_suite() -> dict:
     capex_fcfe_span = res_capex_low["final_fcfe"] - res_capex_high["final_fcfe"]
     capex_val_span = res_capex_low["value_per_share"] - res_capex_high["value_per_share"]
 
-    half_gm_ebit_span = res_gm_half_high["final_ebit"] - res_gm_half_low["final_ebit"]
-    half_gm_fcfe_span = res_gm_half_high["final_fcfe"] - res_gm_half_low["final_fcfe"]
-    half_gm_val_span = res_gm_half_high["value_per_share"] - res_gm_half_low["value_per_share"]
-
     return {
         "base_initial": base_res_initial,
         "base_restored": base_res_restored,
         "base_match": base_match,
         "runs": runs,
         "spans": {
+            "rev": {"ebit": rev_ebit_span, "fcfe": rev_fcfe_span, "val": rev_val_span},
             "gm": {"ebit": gm_ebit_span, "fcfe": gm_fcfe_span, "val": gm_val_span},
             "capex": {"ebit": capex_ebit_span, "fcfe": capex_fcfe_span, "val": capex_val_span},
-            "half_gm": {"ebit": half_gm_ebit_span, "fcfe": half_gm_fcfe_span, "val": half_gm_val_span},
-        },
-        "halved_runs": halved_runs
+        }
     }
 
 
 def print_sensitivity_report(data: dict) -> None:
-    print("=" * 110)
+    print("=" * 112)
     print("FIN 43900 LAB 11 — ONE-AT-A-TIME SENSITIVITY TABLE (NIKE, INC. / NKE)")
-    print("=" * 110)
+    print("=" * 112)
     header = f"{'Independent Input / Case':<32} {'FY31E EBIT ($M)':<18} {'FY31E FCFE ($M)':<18} {'Value ($/sh)':<16} {'Checks':<10}"
     print(header)
-    print("-" * 110)
+    print("-" * 112)
 
     for r in data["runs"]:
         ebit_str = f"{r['ebit']:>8.1f} ({r['delta_ebit']:>+6.1f})"
@@ -353,27 +401,16 @@ def print_sensitivity_report(data: dict) -> None:
         chk_str = "PASS (0.0)" if r["bs_pass"] else "FAIL"
         print(f"{r['case']:<32} {ebit_str:<18} {fcfe_str:<18} {val_str:<16} {chk_str:<10}")
 
-    print("=" * 110)
-    print("\n" + "=" * 80)
+    print("=" * 112)
+    print("\n" + "=" * 90)
     print("OUTPUT SPANS OVER TESTED RANGES (MAX − MIN ACROSS VALID RUNS)")
-    print("=" * 80)
-    print(f"{'Output Metric':<30} {'Gross Margin Span (±1.0 pp)':<26} {'CapEx % Span (1.0%–2.0%)':<24}")
-    print("-" * 80)
-    print(f"{'FY2031E Operating Profit (EBIT)':<30} ${data['spans']['gm']['ebit']:>8.1f} M{'':<15} ${data['spans']['capex']['ebit']:>8.1f} M")
-    print(f"{'FY2031E Free Cash Flow (FCFE)':<30} ${data['spans']['gm']['fcfe']:>8.1f} M{'':<15} ${data['spans']['capex']['fcfe']:>8.1f} M")
-    print(f"{'Value per Diluted Share':<30} ${data['spans']['gm']['val']:>8.2f} /sh{'':<13} ${data['spans']['capex']['val']:>8.2f} /sh")
-    print("=" * 80)
-
-    print("\n" + "=" * 80)
-    print("RANGE DEPENDENCY DEMONSTRATION: HALVED GROSS MARGIN RANGE (±0.5 pp)")
-    print("=" * 80)
-    for hr in data["halved_runs"]:
-        print(f"{hr['case']:<25} EBIT: ${hr['ebit']:>7.1f} M | FCFE: ${hr['fcfe']:>7.1f} M | Value: ${hr['val']:>6.2f} /sh")
-    print("-" * 80)
-    print(f"Halved Margin Spans: EBIT = ${data['spans']['half_gm']['ebit']:.1f} M | FCFE = ${data['spans']['half_gm']['fcfe']:.1f} M | Value = ${data['spans']['half_gm']['val']:.2f} /sh")
-    print("Observation: Halving the input range halves its output spans, illustrating that")
-    print("driver ranking is strictly conditioned 'over these ranges'.")
-    print("=" * 80)
+    print("=" * 90)
+    print(f"{'Output Metric':<30} {'Revenue Growth (±1.0 pp)':<26} {'Gross Margin (±1.0 pp)':<26} {'CapEx % (1.0%–2.0%)':<22}")
+    print("-" * 90)
+    print(f"{'FY2031E Operating Profit (EBIT)':<30} ${data['spans']['rev']['ebit']:>8.1f} M{'':<15} ${data['spans']['gm']['ebit']:>8.1f} M{'':<15} ${data['spans']['capex']['ebit']:>8.1f} M")
+    print(f"{'FY2031E Free Cash Flow (FCFE)':<30} ${data['spans']['rev']['fcfe']:>8.1f} M{'':<15} ${data['spans']['gm']['fcfe']:>8.1f} M{'':<15} ${data['spans']['capex']['fcfe']:>8.1f} M")
+    print(f"{'Value per Diluted Share':<30} ${data['spans']['rev']['val']:>8.2f} /sh{'':<13} ${data['spans']['gm']['val']:>8.2f} /sh{'':<13} ${data['spans']['capex']['val']:>8.2f} /sh")
+    print("=" * 90)
 
     print("\n=== Restored Base Verification ===")
     print(f"Base Initial  : EBIT = ${data['base_initial']['final_ebit']:.1f} M | FCFE = ${data['base_initial']['final_fcfe']:.1f} M | Value = ${data['base_initial']['value_per_share']:.2f}")
