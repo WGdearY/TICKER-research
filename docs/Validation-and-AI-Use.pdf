@@ -1,0 +1,120 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 4304 >>
+stream
+BT /F2 16 Tf 54 744.0 Td (Project 1 Validation and AI Use Record) Tj ET
+BT /F2 12 Tf 54 712.0 Td (Decision version and boundary) Tj ET
+BT /F1 9.5 Tf 54 688.0 Td (Target: NIKE, Inc. \(NYSE: NKE\)) Tj ET
+BT /F1 9.5 Tf 54 674.5 Td (Decision: Watch/defer a new 12-month position.) Tj ET
+BT /F1 9.5 Tf 54 661.0 Td (As-of boundary: FY2026 Form 10-K filed July 15, 2026; September 2, 2026) Tj ET
+BT /F1 9.5 Tf 54 647.5 Td (regular-session close of $38.24.) Tj ET
+BT /F1 9.5 Tf 54 634.0 Td (Reproducible run: python3 scripts/project1_summary.py; no third-party package,) Tj ET
+BT /F1 9.5 Tf 54 620.5 Td (credential, or live request is required.) Tj ET
+BT /F2 12 Tf 54 601.0 Td (Data and convention ledger) Tj ET
+BT /F1 9.5 Tf 54 577.0 Td (| Material input | Source | As-of | Definition and treatment | Risk |) Tj ET
+BT /F1 9.5 Tf 54 563.5 Td (| Revenue | FY2026 10-K, income statement | May 31, 2026 | $46,398m historical) Tj ET
+BT /F1 9.5 Tf 54 550.0 Td (forecast base | Recovery differs from reported results. |) Tj ET
+BT /F1 9.5 Tf 54 536.5 Td (| Cash and short-term investments | FY2026 10-K, balance sheet | May 31, 2026 |) Tj ET
+BT /F1 9.5 Tf 54 523.0 Td ($9,027m; added in enterprise-to-equity bridge | Some cash may be operational. |) Tj ET
+BT /F1 9.5 Tf 54 509.5 Td (| Debt | FY2026 10-K, Note 6 | May 31, 2026 | $7,942m current plus long-term debt;) Tj ET
+BT /F1 9.5 Tf 54 496.0 Td (subtracted in bridge | Book and market values may differ. |) Tj ET
+BT /F1 9.5 Tf 54 482.5 Td (| Diluted shares | FY2026 10-K, Note 10 | FY2026 | 1,481.0m weighted-average shares) Tj ET
+BT /F1 9.5 Tf 54 469.0 Td (used for modeled per-share values | Different from point-in-time shares) Tj ET
+BT /F1 9.5 Tf 54 455.5 Td (outstanding. |) Tj ET
+BT /F1 9.5 Tf 54 442.0 Td (| Market price | Historical price tables, cross-checked | Sep. 2, 2026 | $38.24) Tj ET
+BT /F1 9.5 Tf 54 428.5 Td (regular-session close | Non-primary market-data source; outside the filing date. |) Tj ET
+BT /F2 12 Tf 54 409.0 Td (Validation register) Tj ET
+BT /F1 9.5 Tf 54 385.0 Td (| Claim or output | Failure mode | Test and expected direction | Actual result |) Tj ET
+BT /F1 9.5 Tf 54 371.5 Td (Disposition |) Tj ET
+BT /F1 9.5 Tf 54 358.0 Td (| Linked pro-forma | Accounting identity fails | Assets less liabilities and equity) Tj ET
+BT /F1 9.5 Tf 54 344.5 Td (must equal zero each forecast year. | 0.0 in FY2027-FY2031. | Pass. |) Tj ET
+BT /F1 9.5 Tf 54 331.0 Td (| Refusal control | Model values an unbalanced statement | Force FY2027 cash to) Tj ET
+BT /F1 9.5 Tf 54 317.5 Td (opening cash; model should refuse. | Raises ValueError with a $757.2m gap. | Pass.) Tj ET
+BT /F1 9.5 Tf 54 304.0 Td (|) Tj ET
+BT /F1 9.5 Tf 54 290.5 Td (| Sensitivity isolation | Inputs contaminate the base case | Rerun base after all) Tj ET
+BT /F1 9.5 Tf 54 277.0 Td (cases; outputs should match initial base. | FY2031 EBIT $4,965.0m, FCFE $2,984.5m,) Tj ET
+BT /F1 9.5 Tf 54 263.5 Td (value $30.19 both times. | Pass. |) Tj ET
+BT /F1 9.5 Tf 54 250.0 Td (| Market bridge | Share convention hides a mismatch | Point-in-time shares should) Tj ET
+BT /F1 9.5 Tf 54 236.5 Td (approximate market price; weighted-average shares may differ. | $39.13 bridge) Tj ET
+BT /F1 9.5 Tf 54 223.0 Td (cross-check versus $39.06 August 31 close. | Pass with convention difference) Tj ET
+BT /F1 9.5 Tf 54 209.5 Td (disclosed. |) Tj ET
+BT /F1 9.5 Tf 54 196.0 Td (| Valuation range | One method creates false precision | Preserve differing methods) Tj ET
+BT /F1 9.5 Tf 54 182.5 Td (rather than average them. | FCFE base $30.19, FCFF recovery $48.53, comps median) Tj ET
+BT /F1 9.5 Tf 54 169.0 Td ($45.55. | Range set at $30-$49; no mechanical average. |) Tj ET
+BT /F2 12 Tf 54 149.5 Td (Locked changed-input record preserved from the pre-run sensitivity) Tj ET
+BT /F2 12 Tf 54 133.5 Td (evidence) Tj ET
+BT /F1 9.5 Tf 54 109.5 Td (This record is preserved from sensitivity_0929_NKE.md; it is not recreated after) Tj ET
+BT /F1 9.5 Tf 54 96.0 Td (the fact. The document records a pre-run timestamp of 2026-09-29T14:10:45-04:00 and) Tj ET
+BT /F1 9.5 Tf 54 82.5 Td (a baseline commit identifier of 41f5beb. That identifier is retained as historical) Tj ET
+BT /F1 9.5 Tf 54 69.0 Td (evidence even though it is not available in the current cloned history.) Tj ET
+BT /F1 8 Tf 54 32 Td (Page 1) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 2690 >>
+stream
+BT /F1 9.5 Tf 54 744.0 Td (| Precommit time | Material input | Old to new value | Human prediction before run) Tj ET
+BT /F1 9.5 Tf 54 730.5 Td (| Expected decision effect |) Tj ET
+BT /F1 9.5 Tf 54 717.0 Td (| 2026-09-29T14:10:45-04:00 | Gross-margin trajectory | Base to +1.0 percentage) Tj ET
+BT /F1 9.5 Tf 54 703.5 Td (point in every forecast year | EBIT, FCFE, and value should rise; FY2031 FCFE was) Tj ET
+BT /F1 9.5 Tf 54 690.0 Td (expected to rise about $107m and value about $1.07 per share because no additional) Tj ET
+BT /F1 9.5 Tf 54 676.5 Td (working capital or capex is required. | Support the recovery case but not remove) Tj ET
+BT /F1 9.5 Tf 54 663.0 Td (the need for conditions. |) Tj ET
+BT /F1 9.5 Tf 54 643.5 Td (| Before/after output | Actual decision effect | Reconciliation | Evidence |) Tj ET
+BT /F1 9.5 Tf 54 630.0 Td (| FY2031 EBIT $4,965.0m to $5,093.6m; FY2031 FCFE $2,984.5m to $3,091.6m; value) Tj ET
+BT /F1 9.5 Tf 54 616.5 Td ($30.19 to $31.26. | No action change: watch/defer remains. | Direction and expected) Tj ET
+BT /F1 9.5 Tf 54 603.0 Td (FCFE/value magnitude matched the preserved prediction. |) Tj ET
+BT /F1 9.5 Tf 54 589.5 Td (../sensitivity_0929_NKE.md, Locked Changed-Input Record and sensitivity table. |) Tj ET
+BT /F2 12 Tf 54 570.0 Td (Named AI-use register) Tj ET
+BT /F1 9.5 Tf 54 546.0 Td (| Tool/model surface | Interaction date | Material task | Independent check |) Tj ET
+BT /F1 9.5 Tf 54 532.5 Td (Disposition and effect |) Tj ET
+BT /F1 9.5 Tf 54 519.0 Td (| Codex / GPT-5 | Sep.-Oct. 2026 | Organize filing facts, create draft) Tj ET
+BT /F1 9.5 Tf 54 505.5 Td (documentation, and surface model-check ideas. | FY2026 10-K, source ledger,) Tj ET
+BT /F1 9.5 Tf 54 492.0 Td (arithmetic, and executable model results. | Modified/accepted only where) Tj ET
+BT /F1 9.5 Tf 54 478.5 Td (reconciled; supports documentation, not the decision by itself. |) Tj ET
+BT /F1 9.5 Tf 54 465.0 Td (| Web research through Codex | Sep. 2026 | Locate primary filing and) Tj ET
+BT /F1 9.5 Tf 54 451.5 Td (historical-price references. | SEC filing is primary; price was cross-checked. |) Tj ET
+BT /F1 9.5 Tf 54 438.0 Td (Accepted with the stated as-of boundary. |) Tj ET
+BT /F2 12 Tf 54 418.5 Td (Limitations and monitoring) Tj ET
+BT /F1 9.5 Tf 54 394.5 Td (Do not initiate until the $36.40 price trigger or reported recovery evidence is) Tj ET
+BT /F1 9.5 Tf 54 381.0 Td (met. Re-run the analysis after each quarterly filing. Escalate if NIKE Direct or) Tj ET
+BT /F1 9.5 Tf 54 367.5 Td (Greater China weakens, if EBIT-margin recovery lags the model, or if the cash) Tj ET
+BT /F1 9.5 Tf 54 354.0 Td (classification changes.) Tj ET
+BT /F1 8 Tf 54 32 Td (Page 2) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000272 00000 n 
+0000004627 00000 n 
+0000004763 00000 n 
+0000007504 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+7640
+%%EOF

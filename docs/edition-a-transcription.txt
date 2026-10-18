@@ -1,0 +1,11 @@
+I selected Nike because it is a company I follow and understand well. Nike dominates the global athletic footwear and apparel market with strong brand recognition and a direct-to-consumer business that should, in theory, give it pricing power. The fund holds no position.
+
+Looking at the financials without any model, I notice that revenue basically went nowhere in FY2026 — flat at around $46 billion after a bad FY2025 where revenue dropped nearly 10%. Gross margin fell from about 44.6% in FY2024 to a trough near 42.7% in FY2025, and it only barely recovered in FY2026. A lot of that came from Nike discounting heavily to clear excess inventory. Greater China fell 13% and Nike's own digital channel fell 8% — those two things worry me the most because they suggest the premium brand story may be under pressure.
+
+That said, Nike still has about $9 billion in cash and short-term investments on the balance sheet against roughly $8 billion in debt, so they are not in financial distress. They can absorb a couple more bad years without a crisis.
+
+My rough pre-model view is that the stock at around $38 is pricing in something close to no recovery — maybe 2 to 3% growth forever. I think the real range of outcomes is wider than that. If the turnaround works and gross margins get back toward 44%, I think the stock is worth somewhere in the $45 to $50 range. If China stays weak and Nike Direct keeps shrinking, I think fair value is closer to $28 to $32. Either way I would not initiate at $38 — I'd want to see either the price drop to the low $30s or see actual evidence of recovery in quarterly filings first.
+
+My plan is to build a FCFF DCF model with WACC and a terminal value as the main method, use comparable company multiples as a sanity check, and run a reverse DCF to find out exactly what growth rate the current market price implies. The biggest unknowns I need to resolve in the model are the gross margin trajectory and whether Greater China can stabilize.
+
+Preliminary action: Watch / Defer. No position until price or evidence moves.

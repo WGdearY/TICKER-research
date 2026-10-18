@@ -1,0 +1,34 @@
+{
+  "target": "NIKE, Inc. (NYSE: NKE)",
+  "as_of_date": "2026-09-02",
+  "source_boundary": "FY2026 Form 10-K filed 2026-07-15; September 2, 2026 regular-session close",
+  "market_price_per_share": 38.24,
+  "recommendation": "Watch/defer; do not initiate a new 12-month position.",
+  "supported_valuation_range_per_share": [
+    30.0,
+    49.0
+  ],
+  "reconsideration_conditions": [
+    "Price at or below $36.40 per share.",
+    "Reported evidence supports revenue and operating-margin recovery."
+  ],
+  "base_fcfe_value_per_share": 30.19,
+  "base_fy2031_ebit_usd_millions": 4965.0,
+  "base_fy2031_fcfe_usd_millions": 2984.5,
+  "accounting_check": "PASS: assets less liabilities and equity equals 0.0 in every forecast year.",
+  "sensitivity_span": {
+    "revenue_growth_plus_or_minus_1pp_value_per_share": [
+      29.62,
+      30.76
+    ],
+    "gross_margin_plus_or_minus_1pp_value_per_share": [
+      29.12,
+      31.26
+    ],
+    "capex_1_to_2_percent_of_revenue_value_per_share": [
+      27.79,
+      32.6
+    ]
+  },
+  "limitation": "The FCFE base case attributes 79.9% of equity value to terminal value; range and conditions matter more than point precision."
+}
