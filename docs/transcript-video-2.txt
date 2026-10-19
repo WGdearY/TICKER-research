@@ -1,0 +1,23 @@
+PROJECT: FIN 439 Project 1 — NIKE
+STUDENT: Will Gao
+VIDEO: 2 — Codebase Walkthrough
+STABLE VIDEO URL: https://youtu.be/ILsRrvThoRg
+TITLE: FIN 439 Project 1 — Video 2: NIKE Codebase Walkthrough
+DURATION: 3:37
+REPOSITORY COMMIT/FROZEN VERSION: [Add after final commit]
+
+[00:14] Speaker: Hi, this is my FIN 439 Project 1 codebase walkthrough for NIKE. This repository is a reproducible valuation package. The README gives the decision, source boundary, run command, and limitations. My conclusion is Watch/Defer, with a supported range of $30 to $49 per share.
+
+[00:33] Speaker: A clean user can reproduce the result with this command. It uses no third-party packages, credentials, or live data request. It runs the linked model and sensitivity suite and writes the visible output.
+
+[00:56] Speaker: This output shows the as-of date, the $38.24 market price, recommendation, valuation range, reconsideration conditions, accounting check, and sensitivity results. The base FCFE value is $30.19 per share.
+
+[01:24] Speaker: The core model is in `proforma_nke.py`. Revenue and gross margin determine gross profit. SG&A and depreciation determine EBIT. The model then updates inventory, PP&E, debt, equity, cash, and FCFE. The valuation is based on linked financial statements, not disconnected assumptions.
+
+[02:01] Speaker: This command also runs the deliberate break test. It forces FY2027 cash to opening cash rather than the linked cash value. The model raises a ValueError for a $757.2 million balance-sheet gap. This is an expected pass because the model refuses to value an unbalanced balance sheet.
+
+[02:38] Speaker: This file tests revenue growth, gross margin, and capex sensitivity using clean base inputs for each run. The most material result is capex: value is $32.60 per share at 1 percent of revenue and $27.79 at 2 percent. That $4.81 difference shows that cash conversion is a major risk.
+
+[03:12] Speaker: The main limitation is that 79.9 percent of the FCFE base value comes from terminal value, and the recovery assumptions are analyst judgments. This is why the conclusion remains Watch/Defer. Thank you.
+
+END OF CORRECTED TRANSCRIPT

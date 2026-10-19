@@ -1,15 +1,54 @@
-# Video 2 Script Codebase Walkthrough
+# Video 2 — Codebase Walkthrough
 
-**Target duration:** 4 minutes 30 seconds. Record this as a script, then correct the generated transcript after recording.
+**Target duration:** About 3 to 4 minutes; maximum 5:00.
 
-This repository is a reproducible NIKE Project 1 valuation package. The README gives the decision, setup, run command, source boundary, and limitations. The final visible result is stored in `outputs/project1_visible_output.json`; it includes the as-of date, market price, recommendation, range, and model checks without requiring the grader to run code.
+**Record with:** Keep a small webcam view visible throughout. Open VS Code in the repository and Terminal. Show the README, run the commands below, open the JSON output, then show the named Python files.
 
-The core model is `proforma_nke.py`. It forecasts revenue, gross profit, SG&A, depreciation, interest, taxes, working capital, capex, debt repayment, cash, and FCFE across FY2027 through FY2031. The key financial logic is the linked relationship: revenue and gross margin determine gross profit; SG&A and depreciation determine EBIT; the balance sheet updates inventory, PP&E, other operating assets, debt, and equity; then FCFE and the cash plug complete the model. The script refuses to value an unbalanced model.
+## Commands to run
 
-The deliberate break test is important. When I force FY2027 cash to opening cash instead of the linked cash value, the model throws a ValueError for a $757.2 million balance-sheet gap. This confirms the model does not silently value broken statements.
+```sh
+cd "/Users/wgdeary/FIN439 work folder/TICKER-research"
+python3 scripts/project1_summary.py
+```
 
-`sensitivity_nke.py` imports the same linked logic and uses deep copies of the input dictionary so each sensitivity starts clean. It tests revenue growth plus or minus one percentage point, gross margin plus or minus one percentage point, and capex from 1% to 2% of revenue. It runs every case through the balance-sheet check and reruns the base case at the end to confirm no state contamination.
+Later, run:
 
-The highest-risk financial claim is that the turnaround creates cash value, not merely accounting earnings. The capex test addresses that risk. At 1% of revenue, value is $32.60 per share; at 2%, it falls to $27.79. That $4.81 span is larger than the tested gross-margin or revenue spans, so it supports the watch/defer posture.
+```sh
+python3 proforma_nke.py
+```
 
-Finally, `scripts/project1_summary.py` executes the sensitivity suite and writes the self-contained JSON output. It requires only Python standard library modules and the repository source files. The known limitations are that the model has a 79.9% terminal-value share and that its operating recovery assumptions are analyst judgments, not company guidance.
+## Script
+
+**[Open `README.md`]**
+
+Hi, this is my FIN 439 Project 1 codebase walkthrough for NIKE. This repository is a reproducible valuation package. The README gives the decision, source boundary, run command, and limitations. My conclusion is Watch/Defer, with a supported range of $30 to $49 per share.
+
+**[Open Terminal and run `python3 scripts/project1_summary.py`]**
+
+A clean user can reproduce the result with this command. It uses no third-party packages, credentials, or live data request. It runs the linked model and sensitivity suite and writes the visible output.
+
+**[Open `outputs/project1_visible_output.json`]**
+
+This output shows the as-of date, $38.24 market price, recommendation, valuation range, reconsideration conditions, accounting check, and sensitivity results. The base FCFE value is $30.19 per share.
+
+**[Open `proforma_nke.py`]**
+
+The core model is in `proforma_nke.py`. Revenue and gross margin determine gross profit. SG&A and depreciation determine EBIT. The model then updates inventory, PP&E, debt, equity, cash, and FCFE. The valuation is based on linked financial statements, not disconnected assumptions.
+
+**[Run `python3 proforma_nke.py`]**
+
+This command also runs the deliberate break test. It forces FY2027 cash to opening cash rather than the linked cash value. The model raises a ValueError for a $757.2 million balance-sheet gap. This is an expected pass because the model refuses to value an unbalanced balance sheet.
+
+**[Open `sensitivity_nke.py`, then return to the JSON output]**
+
+This file tests revenue growth, gross margin, and capex sensitivity using clean base inputs for each run. The most material result is capex: value is $32.60 per share at 1 percent of revenue and $27.79 at 2 percent. That $4.81 difference shows that cash conversion is a major risk.
+
+The main limitation is that 79.9 percent of the FCFE base value comes from terminal value, and the recovery assumptions are analyst judgments. This is why the conclusion remains Watch/Defer. Thank you.
+
+## Required evidence timestamps to add after recording
+
+- README, decision, and clean-user command
+- Live output generation and visible JSON output
+- Linked finance logic in `proforma_nke.py`
+- Deliberate break-test / `ValueError`
+- Sensitivity result and limitation

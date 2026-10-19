@@ -1,13 +1,29 @@
-# Video 1 Script Research Evolution and AI Output Check
+# Video 1 — Research Evolution and AI-Output Check
 
-**Target duration:** 2 minutes 30 seconds. Record this as a script, then correct the generated transcript after recording.
+**Target duration:** About 1 minute 45 seconds; maximum 3:00.
 
-I am recommending watch/defer on NIKE, not an initiation. At the September 2, 2026 close of $38.24, the supported range is $30 to $49 per share. The committee should wait for a price at or below $36.40 or filed evidence that revenue and margins are recovering.
+**Record with:** Keep a small webcam view visible throughout. Open `docs/research-evolution.md` first, switch to `docs/validation-and-ai-use.md` for the AI-check section, and then switch to `outputs/project1_visible_output.json` for the capex-sensitivity section.
 
-My Edition A was submitted before project-specific AI use. It already reached watch/defer. My reason was simple: NIKE had net cash and a credible brand, but FY2026 revenue was flat, Greater China and NIKE Direct were weak, and the turnaround was unproven. I planned a DCF, reverse DCF, and a comparable-company check.
+## Script
 
-Edition B did not change the action, but it materially narrowed how I defend it. The linked FCFE model gives $30.19 per share, while my full-recovery FCFF case gives $48.53. The comparable-company EV/EBITDA median gives $45.55, but the peer range is too wide to average. I therefore preserve a $30 to $49 range rather than claim one precise target.
+**[Open `research-evolution.md`]**
 
-One AI output I checked was a suggested peer list and valuation structure. I did not accept the list automatically. I wrote a peer policy first, checked the financial data against primary filings, and qualified or rejected candidates based on business model, scale, leverage, and reporting compatibility. I also checked the DCF bridge and every sensitivity run through the linked model. The capex test had the largest value span, $4.81 per share, so I treat reinvestment as a material risk rather than assuming margin recovery turns directly into cash.
+Hi. My final decision for NIKE is Watch/Defer. At the September 2, 2026 price of $38.24, my supported value range is $30 to $49 per share. I would reconsider at $36.40 or below, or after reported revenue and margin recovery.
 
-The conclusion remains watch/defer because the upside cases require reported recovery that does not yet exist. My validation and AI-use record gives the sources, tests, and AI dispositions.
+Edition A was completed before project-specific AI use. I already chose Watch/Defer because NIKE had a strong brand and net cash, but flat revenue and weak NIKE Direct and Greater China results.
+
+Edition B kept the same action but added stronger model evidence. The FCFE base case is $30.19 per share, while the recovery FCFF case is $48.53. I use a range instead of one target because the recovery is still uncertain.
+
+**[Switch to `validation-and-ai-use.md`]**
+
+One AI-assisted item was a suggested peer list. I did not accept it automatically. I checked the companies against primary filings and evaluated their business model, scale, leverage, and reporting compatibility.
+
+**[Switch to `outputs/project1_visible_output.json`]**
+
+The key model risk is cash conversion. Changing capex from 1 to 2 percent of revenue moves value from $32.60 to $27.79 per share. That result supports waiting for real recovery evidence.
+
+Therefore, my recommendation remains Watch/Defer. Thank you.
+
+## Add after recording
+
+Add the final, actual timestamps to the corrected transcript and the `timestamp_index` column in `docs/project-submission-manifest.csv` after the video has been recorded and uploaded.

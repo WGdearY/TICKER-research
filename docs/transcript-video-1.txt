@@ -1,0 +1,21 @@
+PROJECT: FIN 439 Project 1 — NIKE
+STUDENT: Will Gao
+VIDEO: 1 — Research Evolution and AI Output Check
+STABLE VIDEO URL: https://youtu.be/GABj9Iv9ZYg
+TITLE: FIN 439 Project 1 — Video 1: Research Evolution and AI Check
+DURATION: 1:59
+REPOSITORY COMMIT/FROZEN VERSION: [Add after final commit]
+
+[00:00] Speaker: My Project 1 research. My final decision for NIKE is Watch/Defer. At the September 2, 2026 price of $38.24, my supported value range is $30 to $49 per share. I will reconsider at $36.40 or below, or after reported revenue and margin recovery.
+
+[00:29] Speaker: Edition A was completed before project-specific AI use. I already chose Watch/Defer because NIKE had a strong brand and net cash, but flat revenue and weak NIKE Direct and Greater China results.
+
+[00:47] Speaker: Edition B kept the same action but added stronger model evidence. The FCFE base case is $30.19 per share, while the recovery FCFF case is $48.53. I use a range instead of one target because the recovery is still uncertain.
+
+[01:10] Speaker: One AI-assisted item was a suggested peer list. I did not accept it automatically. I checked the companies against primary filings and evaluated their business model, scale, leverage, and reporting compatibility.
+
+[01:29] Speaker: The key model risk is cash conversion. Changing capex from 1 to 2% of revenue moves value from $32.60 to $27.79 per share. That result supports waiting for real recovery evidence.
+
+[01:48] Speaker: Therefore, my recommendation remains Watch/Defer. Thank you.
+
+END OF CORRECTED TRANSCRIPT
