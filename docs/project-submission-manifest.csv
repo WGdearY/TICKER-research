@@ -1,13 +1,13 @@
 item,required,location_or_url,title,duration_or_as_of,timestamp_index,access_checked,frozen_or_commit_id,notes
-Research-Evolution.pdf,yes,docs/Research-Evolution.pdf,NIKE Project 1 Research Evolution,2026-10-18,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,PDF present and readable in repository.
-Repository,yes,https://github.com/WGdearY/TICKER-research,FIN 439 Project 1 NIKE,2026-10-19,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,GitHub remote reached successfully; final push still required.
-Visible executed output,yes,outputs/project1_visible_output.json,NIKE Project 1 Visible Executed Output,2026-09-02,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,Reproduced successfully with python3 scripts/project1_summary.py.
-Decision memo or deck,yes,docs/Decision-Memo.pdf,NIKE Investment Committee Decision Memo,2026-09-02,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,PDF present and readable in repository.
-Validation-and-AI-Use.pdf,yes,docs/Validation-and-AI-Use.pdf,NIKE Project 1 Validation and AI Use Record,2026-10-18,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,PDF present and readable in repository.
-Video 1,yes,https://youtu.be/GABj9Iv9ZYg,Research Evolution and AI Output Check,1:59,00:00 action/range/trigger; 00:29 Edition A; 00:47 Edition B evidence; 01:10 AI check; 01:29 capex sensitivity; 01:48 conclusion,yes,REPLACE_AFTER_FINAL_COMMIT,Captions reviewed and logged-out access confirmed.
-Transcript Video 1,yes,docs/transcript-video-1.txt,Research Evolution and AI Output Check Transcript,1:59,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,Corrected transcript prepared.
-Video 2,yes,https://youtu.be/ILsRrvThoRg,Codebase Walkthrough,3:37,00:14 README/decision; 00:33 run project1_summary.py; 00:56 JSON output; 01:24 proforma_nke.py; 02:01 ValueError break test; 02:38 sensitivity/capex; 03:12 limitation/conclusion,yes,REPLACE_AFTER_FINAL_COMMIT,Captions reviewed and logged-out access confirmed.
-Transcript Video 2,yes,docs/transcript-video-2.txt,Codebase Walkthrough Transcript,3:37,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,Corrected transcript prepared.
-Video 3,yes,https://youtu.be/iwD-soJunro,Investment Committee Presentation,3:07,00:01 live output/action/range and valuation; 01:23 FY2026 evidence; 02:03 capex risk; 02:25 triggers/committee ask,yes,REPLACE_AFTER_FINAL_COMMIT,Captions reviewed and logged-out access confirmed.
-Transcript Video 3,yes,docs/transcript-video-3.txt,Investment Committee Presentation Transcript,3:07,N/A,yes,REPLACE_AFTER_FINAL_COMMIT,Corrected transcript prepared.
+Research-Evolution.pdf,yes,docs/Research-Evolution.pdf,NIKE Project 1 Research Evolution,2026-10-18,N/A,yes,b4e106b,PDF present and readable in repository.
+Repository,yes,https://github.com/WGdearY/TICKER-research,FIN 439 Project 1 NIKE,2026-10-19,N/A,yes,b4e106b,GitHub remote reached successfully.
+Visible executed output,yes,outputs/project1_visible_output.json,NIKE Project 1 Visible Executed Output,2026-09-02,N/A,yes,b4e106b,Reproduced successfully with python3 scripts/project1_summary.py.
+Decision memo or deck,yes,docs/Decision-Memo.pdf,NIKE Investment Committee Decision Memo,2026-09-02,N/A,yes,b4e106b,PDF present and readable in repository.
+Validation-and-AI-Use.pdf,yes,docs/Validation-and-AI-Use.pdf,NIKE Project 1 Validation and AI Use Record,2026-10-18,N/A,yes,b4e106b,PDF present and readable in repository.
+Video 1,yes,https://youtu.be/GABj9Iv9ZYg,Research Evolution and AI Output Check,1:59,00:00 action/range/trigger; 00:29 Edition A; 00:47 Edition B evidence; 01:10 AI check; 01:29 capex sensitivity; 01:48 conclusion,yes,b4e106b,Captions reviewed and logged-out access confirmed.
+Transcript Video 1,yes,docs/transcript-video-1.txt,Research Evolution and AI Output Check Transcript,1:59,N/A,yes,b4e106b,Corrected transcript prepared.
+Video 2,yes,https://youtu.be/ILsRrvThoRg,Codebase Walkthrough,3:37,00:14 README/decision; 00:33 run project1_summary.py; 00:56 JSON output; 01:24 proforma_nke.py; 02:01 ValueError break test; 02:38 sensitivity/capex; 03:12 limitation/conclusion,yes,b4e106b,Captions reviewed and logged-out access confirmed.
+Transcript Video 2,yes,docs/transcript-video-2.txt,Codebase Walkthrough Transcript,3:37,N/A,yes,b4e106b,Corrected transcript prepared.
+Video 3,yes,https://youtu.be/iwD-soJunro,Investment Committee Presentation,3:07,00:01 live output/action/range and valuation; 01:23 FY2026 evidence; 02:03 capex risk; 02:25 triggers/committee ask,yes,b4e106b,Captions reviewed and logged-out access confirmed.
+Transcript Video 3,yes,docs/transcript-video-3.txt,Investment Committee Presentation Transcript,3:07,N/A,yes,b4e106b,Corrected transcript prepared.
 Optional deployed output,no,,,N/A,N/A,N/A,N/A,Not used.

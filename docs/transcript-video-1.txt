@@ -4,7 +4,7 @@ VIDEO: 1 — Research Evolution and AI Output Check
 STABLE VIDEO URL: https://youtu.be/GABj9Iv9ZYg
 TITLE: FIN 439 Project 1 — Video 1: Research Evolution and AI Check
 DURATION: 1:59
-REPOSITORY COMMIT/FROZEN VERSION: [Add after final commit]
+REPOSITORY COMMIT/FROZEN VERSION: b4e106b
 
 [00:00] Speaker: My Project 1 research. My final decision for NIKE is Watch/Defer. At the September 2, 2026 price of $38.24, my supported value range is $30 to $49 per share. I will reconsider at $36.40 or below, or after reported revenue and margin recovery.
 

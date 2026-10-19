@@ -4,7 +4,7 @@ VIDEO: 3 — Investment Committee Presentation
 STABLE VIDEO URL: https://youtu.be/iwD-soJunro
 TITLE: FIN 439 Project 1 — Video 3: NIKE Investment Committee Presentation
 DURATION: 3:07
-REPOSITORY COMMIT/FROZEN VERSION: [Add after final commit]
+REPOSITORY COMMIT/FROZEN VERSION: b4e106b
 
 [00:01] Speaker: Good afternoon. This live model output supports my recommendation: Watch/Defer on NIKE. Do not initiate a new position at the September 2, 2026 closing price of $38.24. My supported value range is $30 to $49 per share. I am asking the committee to authorize monitoring only and reconsider an initiation at $36.40 or below, or after reported revenue and operating-margin recovery.
 
